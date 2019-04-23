@@ -1,0 +1,51 @@
+{
+  "scripts": {
+    "pretest": "yarn tslint",
+    "test:fast": "TS_NODE_FILES=true NODE_CONFIG_ENV=test mocha 'src/**/__tests__/**/*.test.{ts,tsx}'",
+    "test": "TS_NODE_FILES=true NODE_CONFIG_ENV=test mocha 'src/**/__tests__/**/*.test.{ts,tsx}'",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "clean": "rm -rf build/*",
+    "compile": "tsc",
+    "watch": "nodemon -x yarn"
+  },
+  "keywords": [
+    "comparaonline",
+    "rules"
+  ],
+  "name": "rule-engine",
+  "version": "1.0.0",
+  "description": "Package to allow rule-based configuration of services",
+  "private": false,
+  "author": {
+    "name": "Ezequiel Rabinovich",
+    "email": "erabinovich@gmail.com"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "ts-node --files"
+    },
+    "quiet": true,
+    "ignore": [
+      "build",
+      ".git"
+    ],
+    "ext": "js,json,ts"
+  },
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.18.11",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.4.4"
+  }
+}
