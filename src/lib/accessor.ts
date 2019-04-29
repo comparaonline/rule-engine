@@ -1,5 +1,4 @@
 import { defined } from './defined';
-import { fail } from 'assert';
 import { pathToProperties } from './pathToProperties';
 
 const field = /^[a-zA-Z_0-9]*$/;
@@ -10,7 +9,7 @@ export const accessor = <T extends Object>(val: keyof T & string) => (obj: T) =>
     return defined(obj) ? obj[val] : undefined;
   }
   if (condition.test(val) && obj instanceof Array) {
-    const result = condition.exec(val) || fail('This simply cant happen!');
+    const result = condition.exec(val) as RegExpExecArray;
     const [, left, value] = result;
     const findAccessor = pathToProperties(left).map(accessor);
     return obj.find((each) => {

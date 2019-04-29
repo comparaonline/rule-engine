@@ -28,6 +28,14 @@ describe('DynamicInputSelector', () => {
     expect(selector.apply(testInput)).to.equal(THREE);
   });
 
+  it('fails when with empty from', () => {
+    expect(() => new DynamicInputSelector('', 'test')).to.throw();
+  });
+
+  it('fails when with empty paths', () => {
+    expect(() => new DynamicInputSelector('data', '')).to.throw();
+  });
+
   testSerialization(inputSelectorDeserializer)({
     name: 'dynamic-input',
     deserialized: new DynamicInputSelector('data', 'name')

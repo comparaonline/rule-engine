@@ -1,7 +1,7 @@
 import { BaseOutputSelector } from './base';
 import { accessor } from '../../lib/accessor';
 import { pathToProperties } from '../../lib/pathToProperties';
-import { fail } from 'assert';
+import { notStrictEqual } from 'assert';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
 import { Output } from '../../output';
@@ -17,7 +17,11 @@ export class DynamicOutputSelector extends BaseOutputSelector
   constructor(
     private from: string,
     private path: string
-  ) { super(); }
+  ) {
+    super();
+    notStrictEqual(from, '');
+    notStrictEqual(path, '');
+  }
 
   static deserialize(obj: DynamicOutputSelectorSerialized) {
     return new this(obj.from, obj.path);
@@ -44,7 +48,7 @@ export class DynamicOutputSelector extends BaseOutputSelector
   set(output: Output, value: any): Output {
     const result = output.get(this.from);
     const properties = pathToProperties(this.path);
-    const last = properties.pop() || fail('No property to change');
+    const last = properties.pop() as string;
     const part = properties
       .map(accessor)
       .reduce((a, b) => b(a as any), result);

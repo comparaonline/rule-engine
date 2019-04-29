@@ -5,6 +5,7 @@ import { accessor } from '../../lib/accessor';
 import { pathToProperties } from '../../lib/pathToProperties';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
+import { notStrictEqual } from 'assert';
 
 export interface AgeSelectorSerialized extends Serialized {
   from: string;
@@ -17,7 +18,11 @@ export class AgeSelector extends BaseInputSelector
   constructor(
     private from: string,
     private path: string
-  ) { super(); }
+  ) {
+    super();
+    notStrictEqual(from, '');
+    notStrictEqual(path, '');
+  }
 
   static deserialize(obj: AgeSelectorSerialized) {
     return new this(obj.from, obj.path);

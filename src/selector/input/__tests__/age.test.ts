@@ -29,6 +29,14 @@ describe('AgeSelector', () => {
     expect(selector.apply(testInput)).to.equal(EXPECTED_AGE);
   });
 
+  it('fails when with empty from', () => {
+    expect(() => new AgeSelector('', 'test')).to.throw();
+  });
+
+  it('fails when with empty paths', () => {
+    expect(() => new AgeSelector('data', '')).to.throw();
+  });
+
   testSerialization(inputSelectorDeserializer)({
     name: 'age-selector',
     deserialized: selector

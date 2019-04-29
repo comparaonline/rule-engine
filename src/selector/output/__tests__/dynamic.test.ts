@@ -25,6 +25,14 @@ describe('DynamicOutputSelector', () => {
     expect(data).to.have.nested.property('values.complex[1].value', 'some value');
   });
 
+  it('fails when with empty from', () => {
+    expect(() => new DynamicOutputSelector('', 'test')).to.throw();
+  });
+
+  it('fails when with empty paths', () => {
+    expect(() => new DynamicOutputSelector('data', '')).to.throw();
+  });
+
   testSerialization(outputSelectorDeserializer)({
     name: 'dynamic-output',
     deserialized: new DynamicOutputSelector('data', 'values.string')

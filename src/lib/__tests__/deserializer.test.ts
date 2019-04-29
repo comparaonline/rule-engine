@@ -39,7 +39,7 @@ describe('Deserializer', () => {
 
   it('deserializes an object when it is deserializable', () => {
     const deserializer = new TestDeserializer();
-    const serialized = { class: 'Test', value: 'Value' };
+    const serialized = new Test('Value').serialize();
     const deserialized = deserializer.deserialize(serialized);
     expect(deserialized).to.be.instanceOf(Test).and.to.have.property('value', 'Value');
   });
