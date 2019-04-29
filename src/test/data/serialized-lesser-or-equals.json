@@ -1,0 +1,11 @@
+{
+  "class": "LesserOrEquals",
+  "left": {
+    "class": "StaticSelector",
+    "value": "1"
+  },
+  "right": {
+    "class": "StaticSelector",
+    "value": "2"
+  }
+}

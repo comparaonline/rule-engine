@@ -1,0 +1,30 @@
+{
+  "name": "Test Name",
+  "birthdate": "1984-08-09T00:00:00.000Z",
+  "values": {
+    "number": 1,
+    "boolean": false,
+    "string": "string",
+    "numeric": "0022200",
+    "year": "2000",
+    "array": [0, 1, 2, 3],
+    "complex": [
+      {
+        "code": "first",
+        "value": 1
+      },
+      {
+        "code": "second",
+        "value": 2
+      },
+      {
+        "code": "third",
+        "value": 3
+      },
+      {
+        "code": "fourth",
+        "value": 4
+      }
+    ]
+  }
+}

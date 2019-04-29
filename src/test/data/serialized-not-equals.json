@@ -1,0 +1,12 @@
+{
+  "class": "NotEquals",
+  "left": {
+    "class": "DynamicInputSelector",
+    "from": "data",
+    "path": "name"
+  },
+  "right": {
+    "class": "StaticSelector",
+    "value": "Test Name"
+  }
+}
