@@ -7,6 +7,7 @@
     "clean": "rm -rf build/*",
     "compile": "tsc",
     "watch": "nodemon -x yarn",
+    "prepublishOnly": "yarn compile",
     "cover": "nyc mocha 'src/**/__tests__/**/*.test.{ts,tsx}'"
   },
   "nyc": {
