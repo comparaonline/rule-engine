@@ -1,0 +1,5 @@
+{
+  "class": "DynamicOutputSelector",
+  "from": "data",
+  "path": "values.string"
+}

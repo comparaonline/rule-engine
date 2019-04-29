@@ -1,0 +1,5 @@
+{
+  "class": "DynamicInputSelector",
+  "from": "data",
+  "path": "name"
+}

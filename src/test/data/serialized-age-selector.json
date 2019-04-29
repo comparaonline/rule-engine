@@ -1,0 +1,5 @@
+{
+  "class": "AgeSelector",
+  "from": "data",
+  "path": "birthdate"
+}

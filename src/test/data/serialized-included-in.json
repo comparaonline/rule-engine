@@ -1,0 +1,11 @@
+{
+  "class": "IncludedIn",
+  "left": {
+    "class": "StaticSelector",
+    "value": "test"
+  },
+  "right": {
+    "class": "StaticListSelector",
+    "value": "this, is, a, test"
+  }
+}
