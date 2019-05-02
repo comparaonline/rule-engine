@@ -1,15 +1,36 @@
-import { Rule } from './rule';
-import { Input } from './input';
-import { Output } from './output';
+export { RuleEngine } from './rule-engine';
+export { Rule } from './rule';
 
-export class RuleEngine {
-  constructor(
-    private rules: Rule<any>[]
-  ) { }
+export { Input } from './input';
+export { Output } from './output';
 
-  async run(input: Input, output: Output) {
-    const initialOut = Promise.resolve(output);
-    return this.rules
-      .reduce(async (out, rule) => rule.apply(input, await out), initialOut);
-  }
-}
+export { Deserializer } from './lib/deserializer';
+export { Serializable } from './interfaces/serializable';
+export { Deserializable } from './interfaces/deserializable';
+export { Serialized } from './interfaces/serialized';
+export { conditionDeserializer } from './conditions/deserializer';
+export { inputSelectorDeserializer } from './selector/input/deserializer';
+export { outputSelectorDeserializer } from './selector/output/deserializer';
+
+export { Conditional } from './conditional';
+export { BaseCondition } from './conditions/base';
+export { Always } from './conditions/always';
+export { Equals } from './conditions/equals';
+export { ExcludedIn } from './conditions/excluded-in';
+export { GreaterOrEquals } from './conditions/greater-or-equals';
+export { Greater } from './conditions/greater';
+export { IncludedIn } from './conditions/included-in';
+export { Lesser } from './conditions/lesser';
+export { LesserOrEquals } from './conditions/lesser-or-equals';
+export { Never } from './conditions/never';
+export { NotEquals } from './conditions/not-equals';
+
+export { BaseInputSelector } from './selector/input/base';
+export { AgeSelector } from './selector/input/age';
+export { DynamicInputSelector } from './selector/input/dynamic';
+export { NothingSelector } from './selector/input/nothing';
+export { StaticSelector } from './selector/input/static';
+export { StaticListSelector } from './selector/input/static-list';
+
+export { BaseOutputSelector } from './selector/output/base';
+export { DynamicOutputSelector } from './selector/output/dynamic';
