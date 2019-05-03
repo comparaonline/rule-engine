@@ -5,11 +5,11 @@ import { Input } from './input';
 import { Output } from './output';
 
 export abstract class Rule<S extends Serialized> extends Conditional implements Serializable<S> {
-  static deserialize<S extends Serialized>(_: S) {
+  static deserialize(_: Serialized): Rule<Serialized> {
     throw new Error('Method not implemented');
   }
 
-  static canDeserialize<S extends Serialized>(obj: Serialized): obj is S {
+  static canDeserialize(obj: Serialized): boolean {
     return obj.class === this.name;
   }
 
