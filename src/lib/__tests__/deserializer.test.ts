@@ -43,4 +43,26 @@ describe('Deserializer', () => {
     const deserialized = deserializer.deserialize(serialized);
     expect(deserialized).to.be.instanceOf(Test).and.to.have.property('value', 'Value');
   });
+
+  it('allows adding new deserializers', () => {
+    const deserializer = new TestDeserializer();
+    const serialized = { class: 'Unknown' };
+    deserializer.add({
+      canDeserialize: () => true,
+      deserialize: () => new Test('unknown')
+    });
+    expect(deserializer.deserialize(serialized)).to.have.property('value', 'unknown');
+  });
+
+  it('clears all added deserializers', () => {
+    const deserializer = new TestDeserializer();
+    const serialized = { class: 'Unknown' };
+  /* istanbul ignore next */
+    deserializer.add({
+      canDeserialize: () => true,
+      deserialize: () => new Test('unknown')
+    });
+    deserializer.clear();
+    expect(() => deserializer.deserialize(serialized)).to.throw(DeserializationError);
+  });
 });
