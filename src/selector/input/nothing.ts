@@ -13,10 +13,6 @@ export class NothingSelector extends BaseInputSelector
     return new this();
   }
 
-  static canDeserialize(obj: Serialized): obj is NothingSelectorSerialized {
-    return obj.class === 'NothingSelector';
-  }
-
   serialize(): NothingSelectorSerialized {
     return {
       class: 'NothingSelector'

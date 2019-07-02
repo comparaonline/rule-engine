@@ -2,15 +2,20 @@ import { Input } from '../input';
 import { BaseInputSelector } from '../selector/input/base';
 import { Serialized } from '../interfaces/serialized';
 import { tryOrFalse } from '../lib/helpers';
+import { Serializable } from '../interfaces/serializable';
 
 const INTEGER = /^(0|[1-9]\d*)$/;
 const FLOAT = /^(0|[1-9]\d*)\.\d+$/;
 
-export abstract class BaseCondition {
+export abstract class BaseCondition implements Serializable<Serialized> {
   constructor(
     private left: BaseInputSelector,
     private right: BaseInputSelector
   ) { }
+
+  static canDeserialize(obj: Serialized): boolean {
+    return obj.class === this.name;
+  }
 
   apply(input: Input): boolean {
     const left = this.checkType(this.left.apply(input));

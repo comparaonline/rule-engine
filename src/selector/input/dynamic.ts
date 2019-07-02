@@ -27,10 +27,6 @@ export class DynamicInputSelector extends BaseInputSelector
     return new this(obj.from, obj.path);
   }
 
-  static canDeserialize(obj: Serialized): obj is DynamicInputSelectorSerialized {
-    return obj.class === 'DynamicInputSelector';
-  }
-
   apply(input: Input) {
     const object = input.get(this.from);
     return this.getValue(object);

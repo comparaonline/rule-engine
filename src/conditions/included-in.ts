@@ -15,9 +15,6 @@ export class IncludedIn extends BaseCondition {
       inputSelectorDeserializer.deserialize(obj.right)
     );
   }
-  static canDeserialize(obj: Serialized): obj is IncludedInSerialized {
-    return obj.class === 'IncludedIn';
-  }
 
   protected test(left: any, right: any): boolean {
     return right.includes(left.toString());

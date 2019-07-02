@@ -28,10 +28,6 @@ export class AgeSelector extends BaseInputSelector
     return new this(obj.from, obj.path);
   }
 
-  static canDeserialize(obj: Serialized): obj is AgeSelectorSerialized {
-    return obj.class === 'AgeSelector';
-  }
-
   apply(input: Input) {
     const object = input.get(this.from);
     return this.getValue(object);

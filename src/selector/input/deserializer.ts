@@ -1,4 +1,4 @@
-import { Deserializer } from '../../lib/deserializer';
+import { Deserializer } from '../../deserializer';
 import { BaseInputSelector } from './base';
 import { DynamicInputSelector } from './dynamic';
 import { StaticSelector } from './static';

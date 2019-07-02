@@ -15,9 +15,6 @@ export class LesserOrEquals extends BaseCondition {
       inputSelectorDeserializer.deserialize(obj.right)
     );
   }
-  static canDeserialize(obj: Serialized): obj is LesserOrEqualsSerialized {
-    return obj.class === 'LesserOrEquals';
-  }
 
   protected test(left: any, right: any): boolean {
     return left <= right;

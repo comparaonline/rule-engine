@@ -15,9 +15,6 @@ export class Greater extends BaseCondition {
       inputSelectorDeserializer.deserialize(obj.right)
     );
   }
-  static canDeserialize(obj: Serialized): obj is GreaterSerialized {
-    return obj.class === 'Greater';
-  }
 
   protected test(left: any, right: any): boolean {
     return left > right;

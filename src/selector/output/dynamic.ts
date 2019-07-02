@@ -27,10 +27,6 @@ export class DynamicOutputSelector extends BaseOutputSelector
     return new this(obj.from, obj.path);
   }
 
-  static canDeserialize(obj: Serialized): obj is DynamicOutputSelectorSerialized {
-    return obj.class === 'DynamicOutputSelector';
-  }
-
   serialize(): DynamicOutputSelectorSerialized {
     return {
       class: 'DynamicOutputSelector',

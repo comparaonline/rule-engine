@@ -1,10 +1,5 @@
 import { BaseCondition } from './base';
-import { Serialized } from '../interfaces/serialized';
 import { NothingSelector } from '../selector/input/nothing';
-
-interface AlwaysSerialized extends Serialized {
-  class: 'Always';
-}
 
 export class Always extends BaseCondition {
   constructor() {
@@ -13,9 +8,6 @@ export class Always extends BaseCondition {
 
   static deserialize() {
     return new Always();
-  }
-  static canDeserialize(obj: Serialized): obj is AlwaysSerialized {
-    return obj.class === 'Always';
   }
 
   serialize() {

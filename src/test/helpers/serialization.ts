@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Deserializer } from '../../lib/deserializer';
+import { Deserializer } from '../../deserializer';
 import { Serializable } from '../../interfaces/serializable';
 import { Serialized } from '../../interfaces/serialized';
 

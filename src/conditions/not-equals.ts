@@ -14,9 +14,6 @@ export class NotEquals extends BaseCondition {
       inputSelectorDeserializer.deserialize(obj.right)
     );
   }
-  static canDeserialize(obj: Serialized): obj is NotEqualsSerialized {
-    return obj.class === 'NotEquals';
-  }
   test(left: any, right: any) {
     return left !== right;
   }

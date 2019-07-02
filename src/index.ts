@@ -4,7 +4,7 @@ export { Rule } from './rule';
 export { Input } from './input';
 export { Output } from './output';
 
-export { Deserializer } from './lib/deserializer';
+export { Deserializer } from './deserializer';
 export { Serializable } from './interfaces/serializable';
 export { Deserializable } from './interfaces/deserializable';
 export { Serialized } from './interfaces/serialized';

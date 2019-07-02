@@ -20,10 +20,6 @@ export class StaticListSelector extends BaseInputSelector
     return new this(obj.value);
   }
 
-  static canDeserialize(obj: Serialized): obj is StaticListSelectorSerialized {
-    return obj.class === 'StaticListSelector';
-  }
-
   serialize(): StaticListSelectorSerialized {
     return {
       class: 'StaticListSelector',

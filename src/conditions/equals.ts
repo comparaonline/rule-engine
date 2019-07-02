@@ -15,9 +15,6 @@ export class Equals extends BaseCondition {
       inputSelectorDeserializer.deserialize(obj.right)
     );
   }
-  static canDeserialize(obj: Serialized): obj is EqualsSerialized {
-    return obj.class === 'Equals';
-  }
 
   protected test(left: any, right: any): boolean {
     return left.toString() === right.toString();
