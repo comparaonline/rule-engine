@@ -2,9 +2,16 @@ import { expect } from 'chai';
 import { BaseCondition } from '../base';
 import { StaticSelector } from '../../selector/input/static';
 import { Input } from '../../input';
+import { testDescription } from '../../test/helpers/description';
 
 describe('BaseCondition', () => {
   class TestCondition extends BaseCondition {
+
+    describe() {
+      return {
+        text: 'test condition'
+      };
+    }
     protected test(left: any, right: any): boolean {
       return left === right;
     }
@@ -28,4 +35,6 @@ describe('BaseCondition', () => {
     // tslint:disable-next-line: no-magic-numbers
     expect(condition.checkType('test')).to.deep.equal('test');
   });
+
+  testDescription(condition, `test condition`);
 });

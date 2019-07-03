@@ -1,5 +1,6 @@
 import { BaseCondition } from './base';
 import { NothingSelector } from '../selector/input/nothing';
+import { Description } from '../interfaces/Description';
 
 export class Never extends BaseCondition {
   constructor() {
@@ -12,6 +13,13 @@ export class Never extends BaseCondition {
 
   serialize() {
     return { class: 'Never' };
+  }
+
+  describe(): Description {
+    return {
+      ...this.baseDecription(),
+      text: 'never'
+    };
   }
 
   protected test(): boolean {

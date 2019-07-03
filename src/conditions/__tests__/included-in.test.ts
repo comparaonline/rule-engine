@@ -6,6 +6,7 @@ import { testSerialization } from '../../test/helpers/serialization';
 import { conditionDeserializer } from '../deserializer';
 import { StaticListSelector } from '../../selector/input/static-list';
 import { DynamicInputSelector } from '../../selector/input/dynamic';
+import { testDescription } from '../../test/helpers/description';
 
 describe('IncludedIn', () => {
   const condition = new IncludedIn(
@@ -44,4 +45,6 @@ describe('IncludedIn', () => {
     name: 'included-in',
     deserialized: condition
   });
+
+  testDescription(condition, `"test" is included in the list [this, is, a, test]`);
 });

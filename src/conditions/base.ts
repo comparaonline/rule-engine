@@ -3,11 +3,13 @@ import { BaseInputSelector } from '../selector/input/base';
 import { Serialized } from '../interfaces/serialized';
 import { tryOrFalse } from '../lib/helpers';
 import { Serializable } from '../interfaces/serializable';
+import { Describable } from '../interfaces/describable';
+import { Description } from '../interfaces/Description';
 
 const INTEGER = /^(0|[1-9]\d*)$/;
 const FLOAT = /^(0|[1-9]\d*)\.\d+$/;
 
-export abstract class BaseCondition implements Serializable<Serialized> {
+export abstract class BaseCondition implements Serializable<Serialized>, Describable {
   constructor(
     private left: BaseInputSelector,
     private right: BaseInputSelector
@@ -16,7 +18,15 @@ export abstract class BaseCondition implements Serializable<Serialized> {
   static canDeserialize(obj: Serialized): boolean {
     return obj.class === this.name;
   }
-
+  abstract describe(): Description;
+  baseDecription(): Partial<Description> {
+    return {
+      includes: [
+        this.left.describe(),
+        this.right.describe()
+      ]
+    };
+  }
   apply(input: Input): boolean {
     const left = this.checkType(this.left.apply(input));
     const right = this.checkType(this.right.apply(input));

@@ -1,6 +1,7 @@
 import { BaseInputSelector } from './base';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
+import { Description } from '../../interfaces/Description';
 
 export interface StaticListSelectorSerialized extends Serialized {
   value: string;
@@ -18,6 +19,12 @@ export class StaticListSelector extends BaseInputSelector
 
   static deserialize(obj: StaticListSelectorSerialized) {
     return new this(obj.value);
+  }
+
+  describe(): Description {
+    return {
+      text: `the list [${this.value.join(', ')}]`
+    };
   }
 
   serialize(): StaticListSelectorSerialized {

@@ -1,6 +1,7 @@
 import { BaseCondition } from './base';
 import { Serialized } from '../interfaces/serialized';
 import { inputSelectorDeserializer } from '../selector/input/deserializer';
+import { Description } from '../interfaces/Description';
 
 interface EqualsSerialized extends Serialized {
   class: 'Equals';
@@ -14,6 +15,13 @@ export class Equals extends BaseCondition {
       inputSelectorDeserializer.deserialize(obj.left),
       inputSelectorDeserializer.deserialize(obj.right)
     );
+  }
+
+  describe(): Description {
+    return {
+      ...this.baseDecription(),
+      text: '{{first}} is equal to {{second}}'
+    };
   }
 
   protected test(left: any, right: any): boolean {

@@ -1,6 +1,7 @@
 import { BaseCondition } from './base';
 import { Serialized } from '../interfaces/serialized';
 import { inputSelectorDeserializer } from '../selector/input/deserializer';
+import { Description } from '../interfaces/Description';
 
 interface ExcludedInSerialized extends Serialized {
   class: 'ExcludedIn';
@@ -16,6 +17,12 @@ export class ExcludedIn extends BaseCondition {
     );
   }
 
+  describe(): Description {
+    return {
+      ...this.baseDecription(),
+      text: '{{first}} is not included in {{second}}'
+    };
+  }
   protected test(left: any, right: any): boolean {
     return !right.includes(left.toString());
   }

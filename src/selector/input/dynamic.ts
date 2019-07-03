@@ -5,6 +5,7 @@ import { pathToProperties } from '../../lib/pathToProperties';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
 import { notStrictEqual } from 'assert';
+import { Description } from '../../interfaces/Description';
 
 export interface DynamicInputSelectorSerialized extends Serialized {
   from: string;
@@ -25,6 +26,12 @@ export class DynamicInputSelector extends BaseInputSelector
 
   static deserialize(obj: DynamicInputSelectorSerialized) {
     return new this(obj.from, obj.path);
+  }
+
+  describe(): Description {
+    return {
+      text: `the property '${this.path}' in the '${this.from}' object`
+    };
   }
 
   apply(input: Input) {

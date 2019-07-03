@@ -5,6 +5,7 @@ import { notStrictEqual } from 'assert';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
 import { Output } from '../../output';
+import { Description } from '../../interfaces/Description';
 
 export interface DynamicOutputSelectorSerialized extends Serialized {
   class: 'DynamicOutputSelector';
@@ -32,6 +33,12 @@ export class DynamicOutputSelector extends BaseOutputSelector
       class: 'DynamicOutputSelector',
       from: this.from,
       path: this.path
+    };
+  }
+
+  describe(): Description {
+    return {
+      text: `the output property '${this.path}' in the '${this.from}' object`
     };
   }
 

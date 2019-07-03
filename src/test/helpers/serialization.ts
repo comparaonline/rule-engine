@@ -6,14 +6,14 @@ import { Serialized } from '../../interfaces/serialized';
 export const getSerialized = (name: string) =>
   require(`../data/serialized-${name}.json`);
 
-interface TestParams<T> {
+interface TestParams<T extends { constructor: { name: string } }> {
   deserialized: T;
   name: string;
 }
 
 export const testSerialization = <T extends Serializable<Serialized>>
   (Deserializer: Deserializer<T>) => ({ deserialized, name }: TestParams<T>) =>
-    describe('serialization', () => {
+    describe(`${deserialized.constructor.name} is serializable`, () => {
       const serialized = getSerialized(name);
 
       it('can be serialized', () => {

@@ -5,6 +5,7 @@ import { testInput } from '../../test/helpers/test-input';
 import { testSerialization } from '../../test/helpers/serialization';
 import { conditionDeserializer } from '../deserializer';
 import { StaticListSelector } from '../../selector/input/static-list';
+import { testDescription } from '../../test/helpers/description';
 
 describe('ExcludedIn', () => {
   const condition = new ExcludedIn(
@@ -27,4 +28,5 @@ describe('ExcludedIn', () => {
     name: 'excluded-in',
     deserialized: condition
   });
+  testDescription(condition, `"test" is not included in the list [this, is, a, test]`);
 });

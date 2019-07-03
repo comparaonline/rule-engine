@@ -4,6 +4,7 @@ import { StaticSelector } from '../../selector/input/static';
 import { testInput } from '../../test/helpers/test-input';
 import { testSerialization } from '../../test/helpers/serialization';
 import { conditionDeserializer } from '../deserializer';
+import { testDescription } from '../../test/helpers/description';
 
 describe('Greater', () => {
   const condition = new Greater(
@@ -34,4 +35,6 @@ describe('Greater', () => {
     name: 'greater',
     deserialized: condition
   });
+
+  testDescription(condition, `"2" is greater than "1"`);
 });

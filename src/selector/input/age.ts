@@ -6,6 +6,7 @@ import { pathToProperties } from '../../lib/pathToProperties';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
 import { notStrictEqual } from 'assert';
+import { Description } from '../../interfaces/Description';
 
 export interface AgeSelectorSerialized extends Serialized {
   from: string;
@@ -26,6 +27,12 @@ export class AgeSelector extends BaseInputSelector
 
   static deserialize(obj: AgeSelectorSerialized) {
     return new this(obj.from, obj.path);
+  }
+
+  describe(): Description {
+    return {
+      text: `the age of the property '${this.path}' in the '${this.from}' object`
+    };
   }
 
   apply(input: Input) {

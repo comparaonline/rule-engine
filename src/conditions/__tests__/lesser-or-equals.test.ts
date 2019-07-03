@@ -4,6 +4,7 @@ import { StaticSelector } from '../../selector/input/static';
 import { testInput } from '../../test/helpers/test-input';
 import { testSerialization } from '../../test/helpers/serialization';
 import { conditionDeserializer } from '../deserializer';
+import { testDescription } from '../../test/helpers/description';
 
 describe('LesserOrEquals', () => {
   const condition = new LesserOrEquals(
@@ -34,4 +35,6 @@ describe('LesserOrEquals', () => {
     name: 'lesser-or-equals',
     deserialized: condition
   });
+
+  testDescription(condition, `"1" is lesser or equal than "2"`);
 });

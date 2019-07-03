@@ -3,8 +3,10 @@ import { DynamicOutputSelector } from '../dynamic';
 import { testSerialization } from '../../../test/helpers/serialization';
 import { outputSelectorDeserializer } from '../deserializer';
 import { testOutput } from '../../../test/helpers/test-output';
+import { testDescription } from '../../../test/helpers/description';
 
 describe('DynamicOutputSelector', () => {
+  const selector = new DynamicOutputSelector('data', 'values.string');
   it('returns a value from the specified output', () => {
     const selector = new DynamicOutputSelector('data', 'name');
     const data = selector.apply(testOutput);
@@ -35,6 +37,8 @@ describe('DynamicOutputSelector', () => {
 
   testSerialization(outputSelectorDeserializer)({
     name: 'dynamic-output',
-    deserialized: new DynamicOutputSelector('data', 'values.string')
+    deserialized: selector
   });
+
+  testDescription(selector, `the output property 'values.string' in the 'data' object`);
 });

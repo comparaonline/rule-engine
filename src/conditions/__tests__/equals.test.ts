@@ -5,6 +5,7 @@ import { StaticSelector } from '../../selector/input/static';
 import { testInput } from '../../test/helpers/test-input';
 import { testSerialization } from '../../test/helpers/serialization';
 import { conditionDeserializer } from '../deserializer';
+import { testDescription } from '../../test/helpers/description';
 
 describe('Equals', () => {
   const condition = new Equals(
@@ -43,4 +44,6 @@ describe('Equals', () => {
     name: 'equals',
     deserialized: condition
   });
+
+  testDescription(condition, `the property 'name' in the 'data' object is equal to "Test Name"`);
 });

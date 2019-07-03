@@ -4,6 +4,7 @@ import { testSerialization } from '../../../test/helpers/serialization';
 import { AgeSelector } from '../age';
 import { fakeTimers } from '../../../test/helpers';
 import { inputSelectorDeserializer } from '../deserializer';
+import { testDescription } from '../../../test/helpers/description';
 
 describe('AgeSelector', () => {
   let clock: sinon.SinonFakeTimers;
@@ -41,4 +42,6 @@ describe('AgeSelector', () => {
     name: 'age-selector',
     deserialized: selector
   });
+
+  testDescription(selector, `the age of the property 'birthdate' in the 'data' object`);
 });
