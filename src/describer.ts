@@ -5,9 +5,15 @@ interface Formatter {
   (args: string[], tag: string): (text: string) => string;
 }
 
+const LIST_SEPARATOR = '\n - ';
+
 const replacers: { [key: string]: Formatter } = {
-  first: ([first]: string[], tag: string) => (text: string) => text.replace(tag, first),
-  second: ([, second]: string[], tag: string) => (text: string) => text.replace(tag, second)
+  first: ([first]: string[], tag: string) => (text: string) =>
+    text.replace(tag, first),
+  second: ([, second]: string[], tag: string) => (text: string) =>
+    text.replace(tag, second),
+  list: (list: string[], tag: string) => (text: string) =>
+    text.replace(tag, LIST_SEPARATOR.concat(list.join(LIST_SEPARATOR)))
 };
 export class Describer {
   describe(description: Description): string {
