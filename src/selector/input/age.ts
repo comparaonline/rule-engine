@@ -6,7 +6,7 @@ import { pathToProperties } from '../../lib/pathToProperties';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
 import { notStrictEqual } from 'assert';
-import { Description } from '../../interfaces/Description';
+import { Description } from '../../interfaces/description';
 
 export interface AgeSelectorSerialized extends Serialized {
   from: string;

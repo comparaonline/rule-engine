@@ -1,4 +1,4 @@
-import { Description } from './interfaces/Description';
+import { Description } from './interfaces/description';
 import { fail } from 'assert';
 
 interface Formatter {

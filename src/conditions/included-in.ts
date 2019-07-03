@@ -1,7 +1,7 @@
 import { BaseCondition } from './base';
 import { Serialized } from '../interfaces/serialized';
 import { inputSelectorDeserializer } from '../selector/input/deserializer';
-import { Description } from '../interfaces/Description';
+import { Description } from '../interfaces/description';
 
 interface IncludedInSerialized extends Serialized {
   class: 'IncludedIn';

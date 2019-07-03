@@ -4,7 +4,7 @@ import { Serialized } from '../interfaces/serialized';
 import { tryOrFalse } from '../lib/helpers';
 import { Serializable } from '../interfaces/serializable';
 import { Describable } from '../interfaces/describable';
-import { Description } from '../interfaces/Description';
+import { Description } from '../interfaces/description';
 
 const INTEGER = /^(0|[1-9]\d*)$/;
 const FLOAT = /^(0|[1-9]\d*)\.\d+$/;

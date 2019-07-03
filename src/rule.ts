@@ -4,7 +4,7 @@ import { Serialized } from './interfaces/serialized';
 import { Input } from './input';
 import { Output } from './output';
 import { Describable } from './interfaces/describable';
-import { Description } from './interfaces/Description';
+import { Description } from './interfaces/description';
 
 export abstract class Rule<S extends Serialized> extends Conditional
   implements Serializable<S>, Describable {

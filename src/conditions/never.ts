@@ -1,6 +1,6 @@
 import { BaseCondition } from './base';
 import { NothingSelector } from '../selector/input/nothing';
-import { Description } from '../interfaces/Description';
+import { Description } from '../interfaces/description';
 
 export class Never extends BaseCondition {
   constructor() {

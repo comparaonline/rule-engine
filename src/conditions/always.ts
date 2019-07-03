@@ -1,7 +1,7 @@
 import { BaseCondition } from './base';
 import { NothingSelector } from '../selector/input/nothing';
 import { Describable } from '../interfaces/describable';
-import { Description } from '../interfaces/Description';
+import { Description } from '../interfaces/description';
 
 export class Always extends BaseCondition implements Describable {
   constructor() {

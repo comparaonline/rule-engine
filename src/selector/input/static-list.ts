@@ -1,7 +1,7 @@
 import { BaseInputSelector } from './base';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
-import { Description } from '../../interfaces/Description';
+import { Description } from '../../interfaces/description';
 
 export interface StaticListSelectorSerialized extends Serialized {
   value: string;
