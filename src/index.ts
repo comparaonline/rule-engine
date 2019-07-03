@@ -12,6 +12,10 @@ export { conditionDeserializer } from './conditions/deserializer';
 export { inputSelectorDeserializer } from './selector/input/deserializer';
 export { outputSelectorDeserializer } from './selector/output/deserializer';
 
+export { Describable } from './interfaces/describable';
+export { Description } from './interfaces/description';
+export { Describer } from './describer';
+
 export { Conditional } from './conditional';
 export { BaseCondition } from './conditions/base';
 export { Always } from './conditions/always';
