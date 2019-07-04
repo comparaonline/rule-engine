@@ -1,31 +1,26 @@
 import { Description } from './interfaces/description';
 import { fail } from 'assert';
+import { displayList } from './lib/helpers';
 
-interface Formatter {
-  (args: string[], tag: string): (text: string) => string;
-}
-
-const LIST_SEPARATOR = '\n - ';
-
-const replacers: { [key: string]: Formatter } = {
+const replacers = {
   first: ([first]: string[], tag: string) => (text: string) =>
     text.replace(tag, first),
   second: ([, second]: string[], tag: string) => (text: string) =>
     text.replace(tag, second),
-  list: (list: string[], tag: string) => (text: string) =>
-    text.replace(tag, LIST_SEPARATOR.concat(list.join(LIST_SEPARATOR)))
+  list: (list: string[], tag: string) => (text: string, level: number) =>
+    text.replace(tag, displayList(list, level))
 };
 export class Describer {
-  describe(description: Description): string {
-    const subparts = (description.includes || []).map(descr => this.describe(descr));
+  describe(description: Description, level = 0): string {
+    const subparts = (description.includes || []).map(descr => this.describe(descr, level + 1));
     const formatter = this.parse(description.text, subparts);
-    return formatter(description.text);
+    return formatter(description.text, level);
   }
 
   private parse(descriptionText: string, args: string[]) {
-    return (text: string) => [...this.tags(descriptionText)]
-      .map(([tag, variable]) => (this.getReplacer(variable.trim()))(args, tag))
-      .reduce((acc, val) => val(acc), text);
+    return (text: string, level: number) => [...this.tags(descriptionText)]
+      .map(([tag, variable]) => this.getReplacer(variable.trim())(args, tag))
+      .reduce((acc, val) => val(acc, level), text);
   }
 
   private getReplacer(name: string) {
