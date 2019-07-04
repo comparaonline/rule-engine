@@ -3,11 +3,14 @@ import { DynamicInputSelector } from '../dynamic';
 import { testInput } from '../../../test/helpers/test-input';
 import { testSerialization } from '../../../test/helpers/serialization';
 import { inputSelectorDeserializer } from '../deserializer';
+import { testDescription } from '../../../test/helpers/description';
 
 const ONE = 1;
 const THREE = 3;
 
 describe('DynamicInputSelector', () => {
+  const selector = new DynamicInputSelector('data', 'name');
+
   it('gets the expected first level property', () => {
     const selector = new DynamicInputSelector('data', 'name');
     expect(selector.apply(testInput)).to.equal('Test Name');
@@ -38,6 +41,8 @@ describe('DynamicInputSelector', () => {
 
   testSerialization(inputSelectorDeserializer)({
     name: 'dynamic-input',
-    deserialized: new DynamicInputSelector('data', 'name')
+    deserialized: selector
   });
+
+  testDescription(selector, `the property 'name' in the 'data' object`);
 });

@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { Deserializer } from '../deserializer';
-import { Serializable } from '../../interfaces/serializable';
-import { Serialized } from '../../interfaces/serialized';
-import { DeserializationError } from '../errors/deserialization-error';
+import { Serializable } from '../interfaces/serializable';
+import { Serialized } from '../interfaces/serialized';
+import { DeserializationError } from '../lib/errors/deserialization-error';
 
 describe('Deserializer', () => {
   interface TestSerialized extends Serialized {

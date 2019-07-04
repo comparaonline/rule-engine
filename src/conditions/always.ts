@@ -1,12 +1,9 @@
 import { BaseCondition } from './base';
-import { Serialized } from '../interfaces/serialized';
 import { NothingSelector } from '../selector/input/nothing';
+import { Describable } from '../interfaces/describable';
+import { Description } from '../interfaces/description';
 
-interface AlwaysSerialized extends Serialized {
-  class: 'Always';
-}
-
-export class Always extends BaseCondition {
+export class Always extends BaseCondition implements Describable {
   constructor() {
     super(new NothingSelector(), new NothingSelector());
   }
@@ -14,12 +11,16 @@ export class Always extends BaseCondition {
   static deserialize() {
     return new Always();
   }
-  static canDeserialize(obj: Serialized): obj is AlwaysSerialized {
-    return obj.class === 'Always';
-  }
 
   serialize() {
     return { class: 'Always' };
+  }
+
+  describe(): Description {
+    return {
+      ...this.baseDecription(),
+      text: 'always'
+    };
   }
 
   protected test(): boolean {

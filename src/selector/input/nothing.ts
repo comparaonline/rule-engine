@@ -1,6 +1,7 @@
 import { BaseInputSelector } from './base';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
+import { Description } from '../../interfaces/description';
 
 export interface NothingSelectorSerialized extends Serialized {
   class: 'NothingSelector';
@@ -13,13 +14,15 @@ export class NothingSelector extends BaseInputSelector
     return new this();
   }
 
-  static canDeserialize(obj: Serialized): obj is NothingSelectorSerialized {
-    return obj.class === 'NothingSelector';
-  }
-
   serialize(): NothingSelectorSerialized {
     return {
       class: 'NothingSelector'
+    };
+  }
+
+  describe(): Description {
+    return {
+      text: `nothing`
     };
   }
 

@@ -1,6 +1,6 @@
 import { Equals } from './equals';
 import { NotEquals } from './not-equals';
-import { Deserializer } from '../lib/deserializer';
+import { Deserializer } from '../deserializer';
 import { BaseCondition } from './base';
 import { Always } from './always';
 import { Never } from './never';

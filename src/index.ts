@@ -4,13 +4,17 @@ export { Rule } from './rule';
 export { Input } from './input';
 export { Output } from './output';
 
-export { Deserializer } from './lib/deserializer';
+export { Deserializer } from './deserializer';
 export { Serializable } from './interfaces/serializable';
 export { Deserializable } from './interfaces/deserializable';
 export { Serialized } from './interfaces/serialized';
 export { conditionDeserializer } from './conditions/deserializer';
 export { inputSelectorDeserializer } from './selector/input/deserializer';
 export { outputSelectorDeserializer } from './selector/output/deserializer';
+
+export { Describable } from './interfaces/describable';
+export { Description } from './interfaces/description';
+export { Describer } from './describer';
 
 export { Conditional } from './conditional';
 export { BaseCondition } from './conditions/base';

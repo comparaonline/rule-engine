@@ -1,5 +1,5 @@
 import { DynamicOutputSelector } from './dynamic';
-import { Deserializer } from '../../lib/deserializer';
+import { Deserializer } from '../../deserializer';
 import { BaseOutputSelector } from './base';
 
 class OutputSelectorDeserializer extends Deserializer<BaseOutputSelector> {

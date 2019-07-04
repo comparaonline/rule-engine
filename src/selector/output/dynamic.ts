@@ -5,6 +5,7 @@ import { notStrictEqual } from 'assert';
 import { Serialized } from '../../interfaces/serialized';
 import { Serializable } from '../../interfaces/serializable';
 import { Output } from '../../output';
+import { Description } from '../../interfaces/description';
 
 export interface DynamicOutputSelectorSerialized extends Serialized {
   class: 'DynamicOutputSelector';
@@ -27,15 +28,17 @@ export class DynamicOutputSelector extends BaseOutputSelector
     return new this(obj.from, obj.path);
   }
 
-  static canDeserialize(obj: Serialized): obj is DynamicOutputSelectorSerialized {
-    return obj.class === 'DynamicOutputSelector';
-  }
-
   serialize(): DynamicOutputSelectorSerialized {
     return {
       class: 'DynamicOutputSelector',
       from: this.from,
       path: this.path
+    };
+  }
+
+  describe(): Description {
+    return {
+      text: `the output property '${this.path}' in the '${this.from}' object`
     };
   }
 

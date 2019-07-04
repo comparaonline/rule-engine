@@ -1,6 +1,7 @@
 import { BaseCondition } from './base';
 import { Serialized } from '../interfaces/serialized';
 import { inputSelectorDeserializer } from '../selector/input/deserializer';
+import { Description } from '../interfaces/description';
 
 interface GreaterSerialized extends Serialized {
   class: 'Greater';
@@ -15,8 +16,12 @@ export class Greater extends BaseCondition {
       inputSelectorDeserializer.deserialize(obj.right)
     );
   }
-  static canDeserialize(obj: Serialized): obj is GreaterSerialized {
-    return obj.class === 'Greater';
+
+  describe(): Description {
+    return {
+      ...this.baseDecription(),
+      text: '{{first}} is greater than {{second}}'
+    };
   }
 
   protected test(left: any, right: any): boolean {

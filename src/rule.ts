@@ -3,8 +3,11 @@ import { Serializable } from './interfaces/serializable';
 import { Serialized } from './interfaces/serialized';
 import { Input } from './input';
 import { Output } from './output';
+import { Describable } from './interfaces/describable';
+import { Description } from './interfaces/description';
 
-export abstract class Rule<S extends Serialized> extends Conditional implements Serializable<S> {
+export abstract class Rule<S extends Serialized> extends Conditional
+  implements Serializable<S>, Describable {
   static deserialize(_: Serialized): Rule<Serialized> {
     throw new Error('Method not implemented');
   }
@@ -18,5 +21,6 @@ export abstract class Rule<S extends Serialized> extends Conditional implements 
   }
 
   abstract serialize(): S;
+  abstract describe(): Description;
   protected abstract perform(input: Input, output: Output): Promise<Output>;
 }
