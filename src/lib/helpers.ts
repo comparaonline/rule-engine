@@ -6,3 +6,8 @@ export const tryOrFalse = (fn: () => boolean) => {
     return false;
   }
 };
+
+const separator = (level: number) => `\n${'  '.repeat(level + 1) }- `;
+
+export const displayList = (list: string[], level: number) =>
+  separator(level).concat(list.join(separator(level)));

@@ -28,6 +28,21 @@ describe('Describer', () => {
         { text: '2nd' }
       ]
     };
-    expect(describer.describe(example)).to.equal('the list:\n - 1st\n - 2nd');
+    expect(describer.describe(example)).to.equal('the list:\n  - 1st\n  - 2nd');
+  });
+
+  it('indents list correctly', () => {
+    const example = {
+      text: 'the list:{{list}}',
+      includes: [
+        {
+          text: 'sublist:{{list}}',
+          includes: [{ text: '1st' }]
+        },
+        { text: '2nd' }
+      ]
+    };
+    expect(describer.describe(example))
+      .to.equal('the list:\n  - sublist:\n    - 1st\n  - 2nd');
   });
 });
