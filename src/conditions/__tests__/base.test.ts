@@ -16,7 +16,18 @@ describe('BaseCondition', () => {
       return left === right;
     }
   }
+  class TestConditionAsync extends BaseCondition {
+    describe() {
+      return {
+        text: 'test condition Async'
+      };
+    }
+    protected test(left: any, right: any): Promise<boolean> {
+      return Promise.resolve(left === right);
+    }
+  }
   const condition = new TestCondition(new StaticSelector(1), new StaticSelector(1));
+  const conditionAsync = new TestConditionAsync(new StaticSelector(1), new StaticSelector(1));
 
   it('executes the test method', () => {
     expect(condition.apply(new Input({}))).to.be.true;
@@ -34,6 +45,10 @@ describe('BaseCondition', () => {
   it('does not change strings', () => {
     // tslint:disable-next-line: no-magic-numbers
     expect(condition.checkType('test')).to.deep.equal('test');
+  });
+
+  it('executes the Async test method', async () => {
+    expect(await conditionAsync.apply(new Input({}))).to.be.true;
   });
 
   testDescription(condition, `test condition`);

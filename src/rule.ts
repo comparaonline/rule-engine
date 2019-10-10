@@ -17,7 +17,7 @@ export abstract class Rule<S extends Serialized> extends Conditional
   }
 
   async apply(input: Input, output: Output): Promise<Output> {
-    return this.shouldRun(input) ? this.perform(input, output) : output;
+    return (await this.shouldRun(input)) ? this.perform(input, output) : output;
   }
 
   abstract serialize(): S;

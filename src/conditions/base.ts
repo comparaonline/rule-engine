@@ -1,7 +1,6 @@
 import { Input } from '../input';
 import { BaseInputSelector } from '../selector/input/base';
 import { Serialized } from '../interfaces/serialized';
-import { tryOrFalse } from '../lib/helpers';
 import { Serializable } from '../interfaces/serializable';
 import { Describable } from '../interfaces/describable';
 import { Description } from '../interfaces/description';
@@ -27,10 +26,10 @@ export abstract class BaseCondition implements Serializable<Serialized>, Describ
       ]
     };
   }
-  apply(input: Input): boolean {
+  apply(input: Input): boolean | Promise<boolean> {
     const left = this.checkType(this.left.apply(input));
     const right = this.checkType(this.right.apply(input));
-    return tryOrFalse(() => this.test(left, right));
+    return this.test(left, right);
   }
 
   checkType(value: any) {
@@ -53,5 +52,5 @@ export abstract class BaseCondition implements Serializable<Serialized>, Describ
     } as Serialized;
   }
 
-  protected abstract test(left: any, right: any): boolean;
+  protected abstract test(left: any, right: any): boolean | Promise<boolean>;
 }
