@@ -11,7 +11,10 @@ export abstract class Conditional {
     return this.conditions.map(condition => condition.serialize());
   }
 
-  protected shouldRun(input: Input) {
-    return this.conditions.every(condition => tryOrFalse(() => condition.apply(input)));
+  protected async shouldRun(input: Input) {
+    const result = await Promise
+      .all(this.conditions.map(condition => tryOrFalse(() => condition.apply(input))));
+
+    return result.every(value => value);
   }
 }
