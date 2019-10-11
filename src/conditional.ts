@@ -12,9 +12,9 @@ export abstract class Conditional {
   }
 
   protected async shouldRun(input: Input) {
-    const result = await Promise
-      .all(this.conditions.map(condition => tryOrFalse(() => condition.apply(input))));
-
-    return result.every(value => value);
+    return this.conditions.reduce(
+      async (acc, val) => acc && await tryOrFalse(() => val.apply(input)),
+      Promise.resolve(true)
+    );
   }
 }
