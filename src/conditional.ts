@@ -13,7 +13,7 @@ export abstract class Conditional {
 
   protected async shouldRun(input: Input) {
     return this.conditions.reduce(
-      async (acc, val) => acc && await tryOrFalse(() => val.apply(input)),
+      async (acc, val) => await acc && await tryOrFalse(() => val.apply(input)),
       Promise.resolve(true)
     );
   }
