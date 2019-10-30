@@ -40,7 +40,7 @@ export class DynamicJsonInputSelector extends BaseInputSelector
 
   describe(): Description {
     return {
-      text: `the property '${JSON.stringify(this.path)}' in the '${this.from}' object`
+      text: `the properties [${this.path.map(x => x.key).join(',')}] in the '${this.from}' object`
     };
   }
 

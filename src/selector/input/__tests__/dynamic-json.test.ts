@@ -8,12 +8,20 @@ import { testDescription } from '../../../test/helpers/description';
 const ONE = 1;
 const THREE = 3;
 const path = '[{"key":"name","value":"name"}]';
-describe('DynamicListInputSelector', () => {
+const multiplePath = '[{"key":"name","value":"name"},{"key":"values.string","value":"value"}]';
+
+describe('DynamicJsonInputSelector', () => {
   const selector = new DynamicJsonInputSelector('data', path);
 
   it('gets the expected first level property', () => {
-    const selector = new DynamicJsonInputSelector('data', '[{"key":"name","value":"name"}]');
+    const selector = new DynamicJsonInputSelector('data', path);
     expect(selector.apply(testInput)).to.eql({ name: 'Test Name' });
+  });
+
+  it('gets the expected multiple properties', () => {
+    const selector =
+      new DynamicJsonInputSelector('data', multiplePath);
+    expect(selector.apply(testInput)).to.eql({ name: 'Test Name', value: 'string' });
   });
 
   it('gets the expected nested property', () => {
@@ -48,5 +56,5 @@ describe('DynamicListInputSelector', () => {
   });
 
   testDescription(selector,
-                  `the property '${path}' in the 'data' object`);
+                  `the properties [name] in the 'data' object`);
 });
