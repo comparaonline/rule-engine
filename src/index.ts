@@ -32,6 +32,7 @@ export { NotEquals } from './conditions/not-equals';
 export { BaseInputSelector } from './selector/input/base';
 export { AgeSelector } from './selector/input/age';
 export { DynamicInputSelector } from './selector/input/dynamic';
+export { DynamicJsonInputSelector } from './selector/input/dynamic-json';
 export { NothingSelector } from './selector/input/nothing';
 export { StaticSelector } from './selector/input/static';
 export { StaticListSelector } from './selector/input/static-list';

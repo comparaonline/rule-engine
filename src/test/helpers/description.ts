@@ -6,6 +6,6 @@ export const testDescription = (subject: Describable, expected: string) =>
       const describer = new Describer();
 
       it('generates the right text', () => {
-        expect(describer.describe(subject.describe())).to.equal(expected);
+        expect(describer.describe(subject.describe())).to.eql(expected);
       });
     });
