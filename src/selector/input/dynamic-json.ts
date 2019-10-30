@@ -12,14 +12,14 @@ export interface DynamicListObject {
   value: string;
 }
 
-export interface DynamicListInputSelectorSerialized extends Serialized {
+export interface DynamicJsonInputSelectorSerialized extends Serialized {
   from: string;
   path: string;
-  class: 'DynamicListInputSelector';
+  class: 'DynamicJsonInputSelector';
 }
 
-export class DynamicListInputSelector extends BaseInputSelector
-  implements Serializable<DynamicListInputSelectorSerialized> {
+export class DynamicJsonInputSelector extends BaseInputSelector
+  implements Serializable<DynamicJsonInputSelectorSerialized> {
 
   private path: DynamicListObject[];
   constructor(
@@ -34,7 +34,7 @@ export class DynamicListInputSelector extends BaseInputSelector
     this.path.forEach(list => notStrictEqual(list.value, ''));
   }
 
-  static deserialize(obj: DynamicListInputSelectorSerialized) {
+  static deserialize(obj: DynamicJsonInputSelectorSerialized) {
     return new this(obj.from, obj.path);
   }
 
@@ -47,14 +47,13 @@ export class DynamicListInputSelector extends BaseInputSelector
   apply(input: Input) {
     const object = input.get(this.from);
     return this.path.reduce((curr: {}, obj: DynamicListObject) =>
-    // tslint:disable-next-line: no-parameter-reassignment
-    curr = { ...curr, ...{ [obj.value]: this.getValue(object, obj.key) } },
+      ({ ...curr, ...{ [obj.value]: this.getValue(object, obj.key) } }),
                             {});
   }
 
-  serialize(): DynamicListInputSelectorSerialized {
+  serialize(): DynamicJsonInputSelectorSerialized {
     return {
-      class: 'DynamicListInputSelector',
+      class: 'DynamicJsonInputSelector',
       from: this.from,
       path: JSON.stringify(this.path)
     };

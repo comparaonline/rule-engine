@@ -1,5 +1,5 @@
 {
-  "class": "DynamicListInputSelector",
+  "class": "DynamicJsonInputSelector",
   "from": "data",
   "path": "[{\"key\":\"name\",\"value\":\"name\"}]"
 }
