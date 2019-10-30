@@ -1,0 +1,5 @@
+{
+  "class": "DynamicListInputSelector",
+  "from": "data",
+  "path": "[{\"key\":\"name\",\"value\":\"name\"}]"
+}
