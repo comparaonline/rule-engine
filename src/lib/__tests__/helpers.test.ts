@@ -12,12 +12,12 @@ describe('helpers', () => {
   });
 
   describe('tryOrfalse', () => {
-    it('returns the result value if everything is OK', () => {
-      const result = tryOrFalse(() => true);
+    it('returns the result value if everything is OK', async () => {
+      const result = await tryOrFalse(() => true);
       expect(result).to.be.true;
     });
-    it('returns false if the function throws', () => {
-      const result = tryOrFalse(() => { throw new Error(); });
+    it('returns false if the function throws', async () => {
+      const result = await tryOrFalse(() => { throw new Error(); });
       expect(result).to.be.false;
     });
   });
