@@ -1,7 +1,7 @@
 export const range = (max: number) => [...Array(max).keys()];
-export const tryOrFalse = (fn: () => boolean | Promise<boolean>) => {
+export const tryOrFalse = async (fn: () => boolean | Promise<boolean>) => {
   try {
-    return fn();
+    return await fn();
   } catch (e) {
     return false;
   }
