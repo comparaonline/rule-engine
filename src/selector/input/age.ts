@@ -55,7 +55,8 @@ export class AgeSelector extends BaseInputSelector
       .map(accessor)
       .reduce((a, b) => b(a), object)
       .toString();
-    const from = (/^\d{4}$/.test(date)) ? moment(date, 'YYYY') : moment(date, format);
+    const from = (/^\d{4}$/.test(date)) ? moment(date, 'YYYY') :
+      moment(date, format).isValid() ? moment(date, format): date;
     return moment().diff(from, 'years');
   }
 }
