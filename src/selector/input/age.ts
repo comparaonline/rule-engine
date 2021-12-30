@@ -8,6 +8,8 @@ import { Serializable } from '../../interfaces/serializable';
 import { notStrictEqual } from 'assert';
 import { Description } from '../../interfaces/description';
 
+const format = 'DD/MM/YYYY';
+
 export interface AgeSelectorSerialized extends Serialized {
   from: string;
   path: string;
@@ -53,7 +55,8 @@ export class AgeSelector extends BaseInputSelector
       .map(accessor)
       .reduce((a, b) => b(a), object)
       .toString();
-    const from = (/^\d{4}$/.test(date)) ? moment(date, 'YYYY') : date;
+    const from = (/^\d{4}$/.test(date)) ? moment(date, 'YYYY') :
+      moment(date, format).isValid() ? moment(date, format): date;
     return moment().diff(from, 'years');
   }
 }
