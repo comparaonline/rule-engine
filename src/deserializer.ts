@@ -7,14 +7,14 @@ export abstract class Deserializer<T extends Serializable<Serialized>> {
   protected abstract deserializers: Deserializable<T>[];
   private added: Deserializable<T>[] = [];
 
-  deserialize(obj: Serialized): T {
+  deserialize(obj: Serialized, ruleId?: number): T {
     const deserializer = this.deserializers
       .concat(this.added)
       .find(deserializer => deserializer.canDeserialize(obj));
     if (!deserializer) {
       throw new DeserializationError(obj);
     }
-    return deserializer.deserialize(obj);
+    return deserializer.deserialize(obj, ruleId);
   }
 
   add(deserializable: Deserializable<T>) {
