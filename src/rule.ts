@@ -8,7 +8,7 @@ import { Description } from './interfaces/description';
 
 export abstract class Rule<S extends Serialized> extends Conditional
   implements Serializable<S>, Describable {
-  static deserialize(_: Serialized): Rule<Serialized> {
+  static deserialize(_: Serialized, _ruleId?: number): Rule<Serialized> {
     throw new Error('Method not implemented');
   }
 
