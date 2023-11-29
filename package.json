@@ -39,7 +39,7 @@
     "rules"
   ],
   "name": "@comparaonline/rule-engine",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Package to allow rule-based configuration of services",
   "private": false,
   "author": {
