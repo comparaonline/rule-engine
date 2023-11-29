@@ -2,7 +2,7 @@
   "scripts": {
     "pretest": "yarn tslint",
     "test:fast": "TS_NODE_FILES=true NODE_CONFIG_ENV=test mocha 'src/**/__tests__/**/*.test.{ts,tsx}'",
-    "test": "TS_NODE_FILES=true NODE_CONFIG_ENV=test mocha 'src/**/__tests__/**/*.test.{ts,tsx}'",
+    "test": "TS_NODE_FILES=true NODE_CONFIG_ENV=test  mocha --require ts-node/register --exit --timeout=5000 'src/**/__tests__/**/*.test.{ts,tsx}'",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "clean": "rm -rf build/*",
     "compile": "tsc",
@@ -39,7 +39,7 @@
     "rules"
   ],
   "name": "@comparaonline/rule-engine",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Package to allow rule-based configuration of services",
   "private": false,
   "author": {
@@ -73,11 +73,11 @@
     "@types/node": "^11.13.7",
     "@types/sinon": "^7.0.11",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4",
-    "nodemon": "^1.18.11",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.1",
     "nyc": "^14.0.0",
     "sinon": "^7.3.2",
-    "ts-node": "^8.1.0",
+    "ts-node": "^10.9.1",
     "tslint": "^5.16.0",
     "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.4.4"
