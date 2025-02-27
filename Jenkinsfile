@@ -29,6 +29,13 @@ pipeline {
       steps { publish() }
     }
   }
+  post { 
+    always { 
+      script {
+        jenkinsNotification()
+      }
+    }
+  }
 }
 
 def published_version() {
